@@ -12,12 +12,11 @@ $(document).ready(function(){
   // and change the image position with that ratio.
   // https://codepen.io/lemagus/pen/RWxEYz
   $(window).scroll(function() {
+    var scrolled = $(window).scrollTop()
     $('.parallax').each(function(index, element) {
       var initY = $(this).offset().top
       var height = $(this).height()
       var endY  = initY + $(this).height()
-
-      var scrolled = $(window).scrollTop()
 
       // Check if the element is in the viewport.
       var visible = isInViewport(this)
