@@ -1,11 +1,19 @@
 $(document).ready(function(){
 
   // Populate images from data attributes.
+  var scrolled = $(window).scrollTop()
   $('.parallax').each(function(index) {
       var imageSrc = $(this).data('image-src')
       var imageHeight = $(this).data('height')
       $(this).css('background-image','url(' + imageSrc + ')')
       $(this).css('height', imageHeight)
+
+      // Adjust the background position.
+      var initY = $(this).offset().top
+      var height = $(this).height()
+      var diff = scrolled - initY
+      var ratio = Math.round((diff / height) * 100)
+      $(this).css('background-position','center ' + parseInt(-(ratio * 1.5)) + 'px')
   })
 
   // Attach scroll event to window. Calculate the scroll ratio of each element
